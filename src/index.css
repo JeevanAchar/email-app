@@ -1,13 +1,159 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Open+Sans:wght@400;500;700&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f5f9;
+  color: #636363;
+  overflow: hidden;
+}
+
+.inbox {
+  padding: 50px;
+}
+
+.inbox .flex {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 100px);
+  gap: 20px;
+}
+
+/** Header CSS */
+.inbox header {
+  display: flex;
+  align-items: center;
+}
+
+.inbox header ul {
+  padding: 0;
+}
+
+.inbox header ul li {
+  list-style: none;
+  display: inline;
+  margin: 0 5px;
+}
+
+.inbox header h6 {
+  font-weight: normal;
+  font-size: 18px;
+  margin-right: 20px;
+  color: inherit;
+}
+
+.inbox header button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 7px 15px;
+  text-transform: capitalize;
+}
+
+.inbox header button.active {
+  background-color: #e1e4ea;
+  border-radius: 20px;
+  border: 1px solid #cfd2dc;
+}
+
+/** Sidebar */
+.inbox .sidebar {
+  flex-grow: 1;
+  overflow: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+  min-width: 500px;  
+  padding-bottom: 50px;
+}
+
+.inbox .email-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  border: 1px solid #cfd2dc;
+  transition: ease-in-out;
+  transition-duration: .2s;
+}
+
+.inbox .email-card:hover {
+  border: 1px solid #e54065;
+}
+
+.inbox .email-card img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.inbox .email-card .information h6 {
+  font-weight: normal;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.inbox h6 span {
+  font-weight: bold;
+}
+
+/** Email content */
+.inbox .email-body {
+  background-color: #fff;
+  border-radius: 20px;
+  border: 2px solid #cfd2dc;
+  padding: 25px;
+  height: calc(100vh - 250px);
+  overflow-y: scroll;
+}
+
+.email-body .header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.email-body .header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.email-body .header h6 {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.email-body .header small {
+  font-size: 14px;
+}
+
+.email-body .header .favorite {
+  background-color: #e54065;
+  padding: 7px 15px;
+  font-size: 16px;
+  text-transform: capitalize;
+  border-radius: 20px;
+  margin-left: auto;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.email-body .email-content {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-top: 40px;
 }
