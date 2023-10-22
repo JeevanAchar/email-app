@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { Context } from "../context";
 import { body } from "../mock-data/body";
+import dayjs from "dayjs";
 
 function EmailBody() {
-    const { viewer: { activeEmail } } = React.useContext(Context);
+    const { viewer: { activeEmail }, favorites } = React.useContext(Context);
     const [emailData, setEmailData] = React.useState(null);
 
     useEffect(() => {
         setEmailData(null);
-        
+
         if (!activeEmail) {
             return;
         }
@@ -17,7 +18,6 @@ function EmailBody() {
             try {
                 const response = await fetch(`https://flipkart-email-mock.vercel.app/?id=${activeEmail.id}`);
                 const data = await response.json();
-                console.log(data);
                 setEmailData(data);
             } catch (err) {
                 alert(err);
@@ -36,11 +36,15 @@ function EmailBody() {
                     <img src={`https://ui-avatars.com/api/?background=e54065&color=fff&name=${activeEmail.from.name}&length=1`} />
                     <div className="header-content">
                         <h6>{activeEmail.from.name}</h6>
-                        <small>{activeEmail.date}</small>
+                        <small>{dayjs.unix(activeEmail.date / 1000).format('DD/MM/YYYY hh:mm a')}</small>
                     </div>
-                    <button className="favorite">
-                        Mark as favorite
-                    </button>
+                    {
+                        !favorites.isMarked(activeEmail.id) && (
+                            <button className="favorite" onClick={() => favorites.add(activeEmail)}>
+                                Mark as favorite
+                            </button>
+                        )
+                    }
                 </div>
                 {
                     emailData === null ? (

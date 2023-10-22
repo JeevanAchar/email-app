@@ -4,6 +4,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+*::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -72,6 +76,13 @@ body {
   padding-bottom: 50px;
 }
 
+.inbox .favorite {
+  margin-left: 20px;
+  color: #e54065;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .inbox .email-card {
   display: flex;
   flex-direction: row;
@@ -85,6 +96,10 @@ body {
   border: 1px solid #cfd2dc;
   transition: ease-in-out;
   transition-duration: .2s;
+}
+
+.inbox .email-card.is-read {
+  background-color: #f2f2f2;
 }
 
 .inbox .email-card:hover {
