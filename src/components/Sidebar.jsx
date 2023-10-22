@@ -32,6 +32,18 @@ function Sidebar() {
                 const response = await fetch('https://flipkart-email-mock.vercel.app/');
                 const { list } = await response.json();
 
+                if (activeTab === "unread") {
+                    const unread = list.reduce((a, b) => {
+                        if (!reads.isRead(b.id)) {
+                            a.push(b);
+                        }
+
+                        return a;
+                    }, []);
+
+                    return setInboxList(unread);
+                }                
+
                 return setInboxList(list);
             } catch (err) {
                 return alert(err);

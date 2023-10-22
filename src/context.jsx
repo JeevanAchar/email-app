@@ -17,7 +17,7 @@ const _default = {
 const Context = React.createContext(_default);
 
 function Wrapper({ children }) {
-    const [activeTab, setActiveTab] = React.useState('unread');
+    const [activeTab, setActiveTab] = React.useState('');
     const [inboxList, setInboxList] = React.useState([]);
     const [activeEmail, setActiveEmail] = React.useState(null);
     const [favorites, setFavorites] = React.useState(JSON.parse(localStorage.getItem('favorites') || '[]'));
